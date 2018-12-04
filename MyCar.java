@@ -12,31 +12,56 @@ public class MyCar {
 	// Colors
 	float color[] = { 0.5f, 0.5f, 0.5f, 1.0f };
 	float silver[] = { 0.5f, 0.5f, 0.5f, 1.0f };
-	
+
+	/*
 	// Positions of vertices
 	double vertex1[][] = {
-		  { -0.5, 0.0,  0.0 },
-		  {  0.5, 0.0,  0.0 },
-		  {  0.5, 0.25, 0.0 },
-		  { -0.5, 0.25, 0.0 },
-		  { -0.5, 0.0,  0.5 },
-		  {  0.5, 0.0,  0.5 },
-		  {  0.5, 0.25, 0.5 },
-		  { -0.5, 0.25, 0.5 }
+			{ -0.5, 0.25,  0.0 },
+			{  0.5, 0.25,  0.0 },
+			{  0.5, 0.5, 0.0 },
+			{ -0.5, 0.5, 0.0 },
+			{ -0.5, 0.25,  0.5 },
+			{  0.5, 0.25,  0.5 },
+			{  0.5, 0.5, 0.5 },
+			{ -0.5, 0.5, 0.5 }
+	};
+*/
+	// Positions of vertices
+	double vertex1[][] = {
+			{ -0.5, 0.25,  -0.25 },
+			{  0.5, 0.25,  -0.25 },
+			{  0.5, 0.5, -0.25 },
+			{ -0.5, 0.5, -0.25 },
+			{ -0.5, 0.25,  0.25 },
+			{  0.5, 0.25,  0.25 },
+			{  0.5, 0.5, 0.25 },
+			{ -0.5, 0.5, 0.25 }
 	};
 
+	/*
 	// Positions of vertices
 	double vertex2[][] = {
-		  { -0.3, 0.25, 0.0 },
-		  {  0.3, 0.25, 0.0 },
-		  {  0.2, 0.5,  0.0 },
-		  { -0.2, 0.5,  0.0 },
-		  { -0.3, 0.25, 0.5 },
-		  {  0.3, 0.25, 0.5 },
-		  {  0.2, 0.5,  0.5 },
-		  { -0.2, 0.5,  0.5 }
+		  { -0.3, 0.5, 0.0 },
+		  {  0.3, 0.5, 0.0 },
+		  {  0.2, 0.75,  0.0 },
+		  { -0.2, 0.75,  0.0 },
+		  { -0.3, 0.5, 0.5 },
+		  {  0.3, 0.5, 0.5 },
+		  {  0.2, 0.75,  0.5 },
+		  { -0.2, 0.75,  0.5 }
 	};
-	
+*/
+	// Positions of vertices
+	double vertex2[][] = {
+			{ -0.3, 0.5, -0.25 },
+			{  0.3, 0.5, -0.25 },
+			{  0.2, 0.75,  -0.25 },
+			{ -0.2, 0.75,  -0.25 },
+			{ -0.3, 0.5, 0.25 },
+			{  0.3, 0.5, 0.25 },
+			{  0.2, 0.75,  0.25 },
+			{ -0.2, 0.75,  0.25 }
+	};
 	// IDs of vertices of faces
 	int face[][] = {
 		  { 0, 3, 2, 1 },
@@ -63,8 +88,14 @@ public class MyCar {
 	// Speed
 	int velocity = 5;
 	
-	// Distance from the center of the orbit
-	double transform = 1.0;
+	// Distance from the c
+	// enter of the orbit
+	double transform = 0.0;
+
+	// Place of car
+	//double carplace = 1.4;
+
+	double carplace = 0.0;
 	
 		
 	/**
@@ -96,8 +127,8 @@ public class MyCar {
 	 */  
 	public void calculateMovement() {  
 		r += velocity;
-	    if (r >= 3600) {
-	    	r = 0;
+	    if (r >= 8000) {
+	    	r = -10000;
 	    }
 	}
 
@@ -117,10 +148,14 @@ public class MyCar {
 	public void draw(GLAutoDrawable drawable) {
 		GL2 gl = drawable.getGL().getGL2();
 		GLUT glut = new GLUT();
+		carplace = ((double)r * 0.001);
 		
 		// Set rotation and transformation
-		gl.glRotated(((double)r * 0.1), 0.0, 1.0, 0.0);
-		gl.glTranslated(0.0, 0.0, transform);
+		//gl.glRotated(((double)r * 0.1), 0.0, 1.0, 0.0);
+		gl.glRotated(90.0, 0.0, 1.0, 0.0);
+		///gl.glRotated(90.0, 0.0, 0.1, 0.0);
+		///gl.glTranslated(-((double)r * 0.001), 0.0, 0.35);
+		gl.glTranslated(-carplace, 0.0, transform);
 		 
 		// Set reflection coefficients
 		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_AMBIENT_AND_DIFFUSE, color, 0);
@@ -151,7 +186,7 @@ public class MyCar {
 		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, silver, 0);
 
 		// Draw four spheres
-		gl.glTranslated(0.2, 0.0, 0.05);
+		gl.glTranslated(0.2, 0.25, -0.2);
 		glut.glutSolidSphere(0.1, 30, 20);
 
 		gl.glTranslated(-0.4, 0.0, 0.0);

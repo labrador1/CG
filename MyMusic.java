@@ -65,7 +65,7 @@ public class MyMusic {
         catch (LineUnavailableException e)
         {   e.printStackTrace();  }
         try
-        {   Thread.sleep(1000);  }
+        {   Thread.sleep(30000);  }
         catch (InterruptedException e)
         {  }
         clip.stop();
