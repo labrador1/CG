@@ -13,19 +13,6 @@ public class MyCar {
 	float color[] = { 0.5f, 0.5f, 0.5f, 1.0f };
 	float silver[] = { 0.5f, 0.5f, 0.5f, 1.0f };
 
-	/*
-	// Positions of vertices
-	double vertex1[][] = {
-			{ -0.5, 0.25,  0.0 },
-			{  0.5, 0.25,  0.0 },
-			{  0.5, 0.5, 0.0 },
-			{ -0.5, 0.5, 0.0 },
-			{ -0.5, 0.25,  0.5 },
-			{  0.5, 0.25,  0.5 },
-			{  0.5, 0.5, 0.5 },
-			{ -0.5, 0.5, 0.5 }
-	};
-*/
 	// Positions of vertices
 	double vertex1[][] = {
 			{ -0.5, 0.25,  -0.25 },
@@ -38,19 +25,7 @@ public class MyCar {
 			{ -0.5, 0.5, 0.25 }
 	};
 
-	/*
-	// Positions of vertices
-	double vertex2[][] = {
-		  { -0.3, 0.5, 0.0 },
-		  {  0.3, 0.5, 0.0 },
-		  {  0.2, 0.75,  0.0 },
-		  { -0.2, 0.75,  0.0 },
-		  { -0.3, 0.5, 0.5 },
-		  {  0.3, 0.5, 0.5 },
-		  {  0.2, 0.75,  0.5 },
-		  { -0.2, 0.75,  0.5 }
-	};
-*/
+
 	// Positions of vertices
 	double vertex2[][] = {
 			{ -0.3, 0.5, -0.25 },
@@ -96,6 +71,12 @@ public class MyCar {
 	//double carplace = 1.4;
 
 	double carplace = 0.0;
+
+	//carの縦の長さ
+	double widthx = 0.5;
+
+	//carの横の長さ
+	double widthy = 0.25;
 	
 		
 	/**

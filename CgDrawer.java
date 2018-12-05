@@ -195,8 +195,6 @@ public class CgDrawer implements GLEventListener {
     public void display(GLAutoDrawable drawable) {
         moveLight(lightx,lighty,lightz);
         draw(drawable);
-
-        //System.out.println(lightx);
     }
     
 

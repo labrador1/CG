@@ -55,7 +55,7 @@ public class CgMouseListener implements MouseListener, MouseMotionListener {
      * Called when cursor is pressed
      */
     public void mousePressed(MouseEvent e) {
-        animator.start();
+        //animator.start();
 
     /*
         double snowplace = 0.0;

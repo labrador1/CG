@@ -12,7 +12,7 @@ public class MyScene {
 	// Models of a flag and a car
 	static MyFlag flag1 = null;
 	static MyCar car1 = null;
-	//static MyBoard board1 = null;
+	static MyDonut donut = null;
 	static MyBoard1 board1 = null;
 	static MyBoard2 board2 = null;
 	static MyBoard3 board3 = null;
@@ -21,6 +21,12 @@ public class MyScene {
 	static MyPointboard2 pointboard2 = null;
 	static MyPointboard3 pointboard3 = null;
 	static CgDrawer cgdrawer = null;
+
+	static int all_point = 0;
+	static int point1 = 0;
+	static int point2 = 0;
+	static int point3 = 0;
+	static int flag = 0;
 	
 	/**
 	 * Initialization
@@ -33,8 +39,13 @@ public class MyScene {
 		 // Allocate a car
 		 car1 = new MyCar();
 		 car1.setColor(1.0, 0.0, 0.0);
-		 car1.setVelocity(10);
+		 car1.setVelocity(100);
 		 car1.setTransform(-0.6);
+
+		// Allocate a donut
+		donut = new MyDonut();
+		donut.setColor(1.0, 0.0, 0.0);
+		donut.setVelocity(200);
 
 		// Allocate a board
 		 //board1 = new MyBoard();
@@ -78,11 +89,17 @@ public class MyScene {
 	    	car1.draw(drawable);
 	    gl.glPopMatrix();
 
-		// Draw the board
-		//gl.glPushMatrix();
-		//if(board1 != null)
-		//	board1.draw(drawable);
-		//gl.glPopMatrix();
+		// Draw the donut
+		gl.glPushMatrix();
+		if(donut != null)
+			donut.draw(drawable);
+		gl.glPopMatrix();
+
+		// Draw the donut2
+		gl.glPushMatrix();
+		if(donut != null)
+			donut.draw2(drawable);
+		gl.glPopMatrix();
 
 		// Draw the board1
 		gl.glPushMatrix();
@@ -260,29 +277,34 @@ public class MyScene {
 	}
 */
 
+//当たり判定
 	public static void print() {
-
-		//
 
 		double hit_dis = 10.0;
 		double hit_dis_1 = 10.0;
 		double hit_dis_2 = 10.0;
-		int point = 0;
 
 		hit_dis = Math.sqrt((Math.pow(snowman.snowplace - car1.transform, 2.0) + Math.pow(3.0 - car1.carplace, 2.0)));
 		hit_dis_1 = 3.0 - car1.carplace;
 		hit_dis_2 = snowman.snowplace - car1.transform;
+
 		//System.out.println(hit_dis);
-		if((hit_dis_1 <= 0.75) && (hit_dis_1 >= -0.75) && (hit_dis_2 <= 0.5) && (hit_dis_2 >= -0.5)){
+		if(flag == 0 && (hit_dis_1 <= 0.5 + car1.widthy) && (hit_dis_1 >= -(0.5 + car1.widthy)) && (hit_dis_2 <= car1.widthy) && (hit_dis_2 >= -car1.widthy)){
 			//System.out.println(hit_dis_1);
 			car1.setColor(0.0,0.0,1.0);
-			point += 1;
-			System.out.println(point);
+			all_point += 1;
+			point1 =  all_point % 10;
+			point2 =  all_point / 10 % 10;
+			point3 =  all_point / 100 % 10;
+			System.out.println(all_point);
+			//System.out.println(point1);
+			//System.out.println(point2);
+			//System.out.println(point3);
+			flag = 1;
 		}
 		else{
 			car1.setColor(1.0,0.0,0.0);
 		}
-
 
 	}
 

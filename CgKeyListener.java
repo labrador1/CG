@@ -41,19 +41,22 @@ public class CgKeyListener implements KeyListener {
 			// "M": Music Start
 			case KeyEvent.VK_M:
 				MyMusic.startMusic();
-
+/*
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException d) {
 				}
+				*/
+
 				animator.start();
 				break;
 
 
-			// "S": Music Stop
-			//case KeyEvent.VK_S:
-			//	MyMusic.stopMusic();
-			//	break;
+			// "N": Music Stop
+			case KeyEvent.VK_N:
+				MyMusic.stopMusic();
+				animator.stop();
+				break;
 
 
 			// "X": Move X
